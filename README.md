@@ -2,8 +2,6 @@
 
 Breadth first search for the selector.
 
-Get the first element(s) that matches the selector by traversing down through its descendants in the DOM tree level by level. It use a breadth first search (BFS), that mean it will going deeper in a subtree only until the first matching descendant was found in the current subtree.
-
 ## Getting Started
 Download the [production version][min] or the [development version][max].
 
@@ -14,15 +12,17 @@ In your web page:
 
 ```html
 <script src="jquery.js"></script>
-<script src="dist/closestDescendant.min.js"></script>
+<script src="closestDescendant.min.js"></script>
 <script>
 jQuery(function($) {
-  $.awesome(); // "awesome"
+  var closestSub = $('#elem').closestDescendant('.mySubItem');
 });
 </script>
 ```
 
 ## Documentation
+
+Get the first element(s) that matches the selector by traversing down through its descendants in the DOM tree level by level. It use a breadth first search (BFS), that mean it will going deeper in a subtree only until the first matching descendant was found in the current subtree.
 
 Different to the .find() is, that it will return only the first match element in a subtree.
 
