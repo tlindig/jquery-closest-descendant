@@ -1,0 +1,35 @@
+{
+	"name": "closestDescendant",
+	"title": ".closestDescendant( selector [, options ] )",
+	"description": "Get the first element(s) that matches the selector by traversing down through descendants in the DOM tree level by level. It use a breadth first search (BFS), that mean it will stop going deeper in a subtree if the first matching descendant was found in the current subtree.",
+	"version": "0.0.1",
+	"homepage": "https://github.com/tlindig/jquery-closest-descendant",
+	"author": {
+		"name": "Tobias Lindig",
+		"email": "dev@tlindig.de",
+		"url": "http://tlindig.de/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tlindig/jquery-closest-descendant.git"
+	},
+	"bugs": "https://github.com/tlindig/jquery-closest-descendant/issues",
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://github.com/tlindig/jquery-closest-descendant/blob/master/LICENSE-MIT"
+		}
+	],
+	"dependencies": {
+		"jquery": ">=1.4"
+	},
+	"keywords": [
+		"traversing",
+		"descendant",
+		"closest",
+		"children",
+		"breadth-first-search",
+		"BFS",
+		"downward"
+	]
+}
