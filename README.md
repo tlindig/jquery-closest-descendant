@@ -85,4 +85,10 @@ jQuery('#start').find('.c')
 ```
 result: #e1, #e2, #e3, #e4
 
+### Demo
+
+ Here you can see the plugin in action: [Demo][demo]
+ [demo]: http://tlindig.github.io/jquery-closest-descendant/
+ 
+
 
