@@ -90,5 +90,12 @@ result: #e1, #e2, #e3, #e4
  Here you can see the plugin in action: [Demo][demo]
  [demo]: http://tlindig.github.io/jquery-closest-descendant/
  
+### History
+
+Befor the [jQuery Plugin Database crashed] [crashed], I published this plugin under the name "closestChild". 
+You can view the old source here:  [closestChild][oldSource]
+[crashed]:http://blog.jquery.com/2011/12/13/plugins-site-update-the-old-is-new-again/
+[oldSource]: https://github.com/groe/nested_form/commit/c5e9f0e5290cc3989978b14d29742bb116eb57a1
+
 
 
