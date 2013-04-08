@@ -1,47 +1,116 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>jQuery-closest-descendant by tlindig</title>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<title>jQuery-closest-descendant by tlindig</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="https://github.com/tlindig/jquery-closest-descendant/raw/master/dist/closestDescendant.min.js"></script>
+		<link rel="stylesheet" href="stylesheets/styles.css">
+		<link rel="stylesheet" href="stylesheets/pygment_trac.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
 
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>jQuery-closest-descendant</h1>
-        <p>Get the first element(s) that matches the selector by testing the element itself and traversing down through its descendants in the DOM tree level by level. It use a breadth first search (BFS), that mean it will going deeper in a subtree only until the first matching descendant was found in the current subtree.</p>
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="https://github.com/tlindig/jquery-closest-descendant/raw/master/dist/closestDescendant.min.js"></script>
 
-        <p class="view"><a href="https://github.com/tlindig/jquery-closest-descendant">View the Project on GitHub <small>tlindig/jquery-closest-descendant</small></a></p>
+		<script type="text/javascript">
+			(function($){
+				window.markElements = function(elems) {
+					$('.marked').removeClass('marked');
+					elems.addClass('marked');
+
+					var text = "";
+
+					elems.each(function(){ console.log(this); text += this.textContent + ", ";})
+					$('#result').text(text);
+				}
+			})(jQuery);
+		</script>
+		<style>
+			#parent {
+				padding: 2ex;
+				margin: 2ex;
+				border: 1px solid lightblue;
+			}
+			#parent div {
+				border: 1px dotted lightblue;
+				margin: 1ex;
+				padding: 1ex;
+			}
+			.c > span {
+				background: yellow;
+				border: 2px solid transparent;
+				padding: 0.5ex;
+			}
+			.marked > span {
+				border: 2px solid green;
+			}
+			.btn {
+				background: -moz-linear-gradient(center top , #F8F8F8 0%, #DDDDDD 100%) repeat scroll 0 0 transparent;
+				border: 1px solid #D2D2D2;
+				border-radius: 5px 5px 5px 5px;
+				box-shadow: 0 1px 0 #FFFFFF inset, 0 -1px 0 rgba(0, 0, 0, 0.03) inset;
+				line-height: 3ex;
+				padding: 1ex 4ex;
+				margin-bottom: 1ex;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				<h1>jQuery-closest-descendant</h1>
+				<p>Get the first element(s) that matches the selector by testing the element itself and traversing down through its descendants in the DOM tree level by level. It use a breadth first search (BFS), that mean it will going deeper in a subtree only until the first matching descendant was found in the current subtree.</p>
+
+				<p class="view"><a href="https://github.com/tlindig/jquery-closest-descendant">View the Project on GitHub <small>tlindig/jquery-closest-descendant</small></a></p>
 
 
-        <ul>
-          <li><a href="https://github.com/tlindig/jquery-closest-descendant/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/tlindig/jquery-closest-descendant/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/tlindig/jquery-closest-descendant">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h3>Demopage for jQuery Plugin .closestDescendant()</h3>
-        
-        
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/tlindig">tlindig</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+				<ul>
+					<li><a href="https://github.com/tlindig/jquery-closest-descendant/zipball/master">Download <strong>ZIP File</strong></a></li>
+					<li><a href="https://github.com/tlindig/jquery-closest-descendant/tarball/master">Download <strong>TAR Ball</strong></a></li>
+					<li><a href="https://github.com/tlindig/jquery-closest-descendant">View On <strong>GitHub</strong></a></li>
+				</ul>
+			</header>
+			<section>
+				<h3>Demopage for jQuery Plugin .closestDescendant()</h3>
+
+				<div id="parent">
+					parent
+					<div>
+						child 1
+						<div>
+							child 1.1
+							<div class="c">
+								child 1.1.1 <span>class="c"</span>
+							</div>
+						</div>
+					</div>
+					<div class="c">
+						child 2 <span>class="c"</span>
+					</div>
+					<div class="c">
+						child 3 <span>class="c"</span>
+						<div class="c">
+							child 3.1 <span>class="c"</span>
+						</div>
+					</div>
+				</div>
+
+				<p>Result: <span id="result"></span></p>
+
+				<div class="btn" onclick="window.markElements( jQuery('#parent').closestDescendant('.c')) ">jQuery('#parent').closestDescendant(".c")</div>
+				<div class="btn" onclick="window.markElements( jQuery('#parent').find('.c:first')) ">jQuery('#parent').find(".c:first")</div>
+				<div class="btn" onclick="window.markElements( jQuery('#parent').closestDescendant('.c', true)) ">jQuery('#parent').closestDescendant(".c", true)</div>
+				<div class="btn" onclick="window.markElements( jQuery('#parent').find('.c')) ">jQuery('#parent').find(".c")</div>
+			</section>
+			<footer>
+				<p>This project is maintained by <a href="https://github.com/tlindig">tlindig</a></p>
+				<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+			</footer>
+		</div>
+		<script src="javascripts/scale.fix.js"></script>
+
+	</body>
 </html>
