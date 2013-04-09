@@ -1,6 +1,12 @@
-/*! .closestDescendant( selector [, options ] ) - v0.1.0 - 2013-04-08
-* https://github.com/tlindig/jquery-closest-descendant
-* Copyright (c) 2013 Tobias Lindig; Licensed MIT */
+/**
+ * closestDescendant - 0.1.1 - 2013-04-09
+ * https://github.com/tlindig/jquery-closest-descendant 
+ *
+ * Copyright (c) 2013 Tobias Lindig
+ * http://tlindig.de/ 
+ *
+ * Licensed MIT
+ */
 (function( $ ) {
 
 	/**
