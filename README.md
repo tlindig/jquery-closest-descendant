@@ -3,12 +3,13 @@
 Breadth first search for the selector downward in the DOM tree.
 
 ## Getting Started
-Download the [minified version][min] or the [uncompressed version][max] in load it in your page.
+Download the minified version [dist/closestDescendant.min.js][min] or the uncompressed version 
+[dist/closestDescendant.js][max] and load or add it in your page.
 
 [min]: https://raw.github.com/tlindig/jquery-closest-descendant/master/dist/closestDescendant.min.js
 [max]: https://raw.github.com/tlindig/jquery-closest-descendant/master/dist/closestDescendant.js
 
-Or add this link to get jQuery and this plugin online without download:
+Or add this links to get jQuery and the plugin online without download:
 
 ```html
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -20,7 +21,9 @@ After this, you can call this method on every jQuery wrapped DOM element.
 ```html
 <script>
 jQuery(function($) {
+  // ...	
   var closestSub = $('#elem').closestDescendant('.mySubItem');
+  // ...
 });
 </script>
 ```
@@ -36,6 +39,11 @@ Parameter: {selectors} **selector** *-required-* a jQuery selector
 Parameter: {boolean} **findAll** *-optional-* default is false, so tree walking will be stopped at fist match. If true, every subtree will be visited to find one match.
 
 Returns: {jQuery} jQuery object with the matched element(s). If did not found one, an empty jQuery object (.length === 0) will be returned.
+
+## Demo
+
+ Here you can see the plugin in action: [Demo][demo]
+ [demo]: http://tlindig.github.io/jquery-closest-descendant/
 
 ## Example
 
@@ -85,12 +93,7 @@ jQuery('#start').find('.c')
 ```
 result: #e1, #e2, #e3, #e4
 
-### Demo
-
- Here you can see the plugin in action: [Demo][demo]
- [demo]: http://tlindig.github.io/jquery-closest-descendant/
- 
-### History
+## History
 
 Befor the [jQuery Plugin Database crashed] [crashed], I published this plugin under the name "closestChild". 
 You can view the old source here:  [closestChild][oldSource]
