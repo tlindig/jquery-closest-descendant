@@ -1,22 +1,37 @@
-'use strict';
-
+/*global module:false*/
 module.exports = function(grunt) {
+    "use strict"; //enable ECMAScript 5 Strict Mode
+
+    // overwrite platform specific setting get always unix like line feed char
+    grunt.util.linefeed = '\n';
 
     // Project configuration.
     grunt.initConfig({
-        // Metadata.
-        pkg: grunt.file.readJSON('closestDescendant.jquery.json'),
+        // global properties
+        pkg: (function() {
+            var prop = grunt.file.readJSON('closestDescendant.jquery.json');
+            prop.build = {
+                year: grunt.template.today('yyyy'),
+                date: grunt.template.today('yyyy-mm-dd'),
+                time: grunt.template.today('HH:mm')
+            };
+            return prop;
+        })(),
         banner: [
-            '/**\n',
-            ' * <%= pkg.name %> - <%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n',
-            ' * <%= pkg.homepage %> \n',
-            ' *\n',
-            ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n',
-            ' * <%= pkg.author.url %> \n',
-            ' *\n',
-            ' * Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %>\n',
+            '/*!',
+            ' * <%= pkg.title || pkg.name %>',
+            ' * <%= pkg.homepage %>',
+            ' *',
+            ' * v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>',
+            ' *',
+            ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>',
+            ' * <%= pkg.author.url %>',
+            ' *',
+            ' * License: <%= _.pluck(pkg.licenses, "type").join(", ") %>',
+            ' *',
+            ' * Author: <%= (typeof pkg.author === "string") ? pkg.author : (pkg.author.name + " <" + pkg.author.email + ">") %>',
             ' */\n'
-        ].join(''),
+        ].join('\n'),
         // Task configuration.
         clean: {
             files: ['dist']
@@ -41,7 +56,7 @@ module.exports = function(grunt) {
             }
         },
         qunit: {
-            files: ['test/**/*.html']
+            files: ['test/**/*.html', '!test/**/manually*.html']
         },
         jshint: {
             gruntfile: {
@@ -79,13 +94,8 @@ module.exports = function(grunt) {
         }
     });
 
-    // These plugins provide necessary tasks.
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-qunit');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    // Load plugins provide necessary task.
+    require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
 
     // Default task.
     grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'concat', 'uglify']);

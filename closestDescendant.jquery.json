@@ -31,6 +31,8 @@
         "breadth-first-search",
         "BFS",
         "downward",
-        "find"
+        "find",
+        "dom",
+        "tlindig"
     ]
 }

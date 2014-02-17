@@ -1,11 +1,15 @@
-/**
- * closestDescendant - 0.1.2 - 2014-02-13
- * https://github.com/tlindig/jquery-closest-descendant 
+/*!
+ * .closestDescendant( selector [, findAll ] )
+ * https://github.com/tlindig/jquery-closest-descendant
+ *
+ * v0.1.2 - 2014-02-17
  *
  * Copyright (c) 2014 Tobias Lindig
- * http://tlindig.de/ 
+ * http://tlindig.de/
  *
- * Licensed MIT
+ * License: MIT
+ *
+ * Author: Tobias Lindig <dev@tlindig.de>
  */
 (function($) {
 
