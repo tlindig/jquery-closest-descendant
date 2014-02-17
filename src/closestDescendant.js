@@ -2,7 +2,7 @@
  * closestDescendant
  * https://github.com/tlindig/jquery-closest-descendant
  *
- * Copyright (c) 2013 Tobias Lindig
+ * Copyright (c) 2014 Tobias Lindig
  * Licensed under the MIT license.
  */
 
