@@ -17,15 +17,18 @@
      * @param  {selectors} selector -required- a jQuery selector
      * @param  {boolean} findAll -optional- default is false, if true, every
      *                           subtree will be visited until first match
+     * @param  {boolean} sortByAppearance -optional- default is false, if true,
+     *                           element(s) are returned in the order they appear in the DOM
      * @return {jQuery} matched element(s)
      */
-    $.fn.closestDescendant = function(selector, findAll) {
+    $.fn.closestDescendant = function(selector, findAll, sortByAppearance) {
 
         if (!selector || selector === '') {
             return $();
         }
 
         findAll = findAll ? true : false;
+        sortByAppearance = sortByAppearance ? true : false;
 
         var resultSet = $();
 
@@ -54,6 +57,18 @@
             }
         });
 
+        // Reorder elements in the same order as they appear in the DOM 
+        if (sortByAppearance)
+        {
+            resultSet = resultSet.sort(function(a, b) 
+            {
+                if (a === b) { return 0; }
+                if (!a.compareDocumentPosition) { return a.sourceIndex - b.sourceIndex; } // IE8 and below}
+                if (a.compareDocumentPosition(b) & 2) { return 1; } // b comes before a
+                return -1;
+            });        
+        }
+        
         return resultSet;
     };
 })(jQuery);
